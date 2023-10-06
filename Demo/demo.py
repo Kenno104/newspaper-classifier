@@ -12,8 +12,13 @@ from sklearn import metrics
 from datetime import datetime, timedelta
 
 import tensorflow as tf
+import os
 
-# Now you can use this loaded_model for inference in your production environment
+# Log the current directory
+print("Current Directory:", os.getcwd())
+
+# List files in the directory
+print("Directory Contents:", os.listdir('../Models'))
 
 # Load models
 logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
