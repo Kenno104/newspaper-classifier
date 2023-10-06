@@ -5,3 +5,4 @@ gensim
 xgboost
 textblob
 joblib
+tensorflow
