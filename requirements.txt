@@ -4,3 +4,4 @@ seaborn
 gensim
 xgboost
 textblob
+joblib
