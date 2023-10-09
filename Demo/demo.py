@@ -21,10 +21,10 @@ from datetime import datetime, timedelta
 # print("Directory Contents:", os.listdir('../Models'))
 
 # Load models
-logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
-logistic_vectorizer = joblib.load('../Models/logistic_vectorizer.pkl')
-naive_bayes_model = joblib.load('../Models/naive_bayes_model.pkl')['classifier']  
-naive_bayes_vectorizer = joblib.load('../Models/naive_bayes_vectorizer.pkl')
+logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']  
+logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
+naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
+naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
 # random_forest_model = joblib.load('../Models/random_forest_model.pkl')['classifier'] 
 # random_forest_vectorizer = joblib.load('../Models/random_forest_vectorizer.pkl')
 
