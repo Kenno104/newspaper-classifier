@@ -1,5 +1,5 @@
 scikit-learn
-nltk
+# nltk
 seaborn
 gensim
 xgboost
