@@ -1,8 +1,8 @@
 scikit-learn
 # nltk
-seaborn
-gensim
-xgboost
-textblob
+# seaborn
+# gensim
+# xgboost
+# textblob
 joblib
-tensorflow
+# tensorflow
