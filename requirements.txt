@@ -6,3 +6,4 @@ scikit-learn
 # textblob
 joblib
 # tensorflow
+streamlit
