@@ -12,13 +12,13 @@ from sklearn import metrics
 from datetime import datetime, timedelta
 
 # import tensorflow as tf
-import os
+# import os
 
-# Log the current directory
-print("Current Directory:", os.getcwd())
+# # Log the current directory
+# print("Current Directory:", os.getcwd())
 
-# List files in the directory
-print("Directory Contents:", os.listdir('../Models'))
+# # List files in the directory
+# print("Directory Contents:", os.listdir('../Models'))
 
 # Load models
 logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
