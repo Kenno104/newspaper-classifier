@@ -11,7 +11,7 @@ from sklearn import feature_selection
 from sklearn import metrics
 from datetime import datetime, timedelta
 
-import tensorflow as tf
+# import tensorflow as tf
 import os
 
 # Log the current directory
