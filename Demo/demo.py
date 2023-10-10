@@ -1,33 +1,46 @@
 import pandas as pd
-import streamlit as st
 import numpy as np
-import time
+import streamlit as st
 import joblib 
-from sklearn import feature_selection, linear_model, model_selection, preprocessing
-from sklearn import pipeline
-from sklearn import model_selection
-# from sklearn import feature_extraction
-from sklearn import feature_selection
-from sklearn import metrics
 from datetime import datetime, timedelta
-
-# import tensorflow as tf
-# import os
-
-# # Log the current directory
-# print("Current Directory:", os.getcwd())
-
-# # List files in the directory
-# print("Directory Contents:", os.listdir('../Models'))
+from PIL import Image
 
 # Load models
-logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']  
-logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
-naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
-naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
-# random_forest_model = joblib.load('../Models/random_forest_model.pkl')['classifier'] 
-# random_forest_vectorizer = joblib.load('../Models/random_forest_vectorizer.pkl')
+logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
+logistic_vectorizer = joblib.load('../Models/logistic_vectorizer.pkl')
+naive_bayes_model = joblib.load('../Models/naive_bayes_model.pkl')['classifier']  
+naive_bayes_vectorizer = joblib.load('../Models/naive_bayes_vectorizer.pkl')
 
+# Branding
+logo = Image.open('../Demo/Branding/deloitte-logo.png')
+
+# FUNCTIONS
+# Basic page setup
+class Home:
+    def pageConfig():
+        st.set_page_config(
+            page_title='Text Classification Demo',
+            page_icon=':newspaper:',
+            layout='wide'
+        )
+        
+        # Custom CSS for light theme
+        light_theme_css = """
+        <style>
+        body {
+            background-color: #FFFFFF;
+        }
+        </style>
+        """
+        # Inject custom CSS 
+        st.markdown(light_theme_css, unsafe_allow_html=True)
+
+    def createHeading():
+        st.title('Text Classification Demo')
+        st.markdown('<h3 style="color: #86BC25;">For classifying newspaper headlines</h3>', unsafe_allow_html=True)
+        now = datetime.now().strftime('%H:%M')
+
+# Load correct model & vectoriser
 def selectModel(selected_model):
         if selected_model == 'Logistic Regression':
             return logistic_model, logistic_vectorizer  
@@ -38,7 +51,7 @@ def selectModel(selected_model):
         else:
             return 'Invalid model'
 
-# Model prediction
+# Model prediction flow
 def modelPrediction(text_input, selected_model):
     #Load correct model & vectoriser
     loaded_model, vectorizer = selectModel(selected_model)
@@ -81,25 +94,13 @@ def modelPrediction(text_input, selected_model):
     
     return prediction, max_confidence, second_prediction, second_max_confidence
 
-
-class Home:
-    def pageConfig():
-        st.set_page_config(
-            page_title='Text Classification Demo',
-            page_icon=':newspaper:',
-            layout='wide'
-        )
-
-    def createHeading():
-        st.title('Text Classification Demo')
-        st.subheader(f":red[{'For classifying newspaper headlines'}]")
-        now = datetime.now().strftime('%H:%M')
-
 # Configure webpage
 Home.pageConfig()
 
+# Page split into 3 columns (Info, Input, Output)
 title_column, model_column, results_column = st.columns(3)
 
+# Initalise Results column
 with results_column:
     st.markdown('\n\n')
     st.markdown('\n\n')
@@ -110,6 +111,7 @@ with results_column:
     st.markdown('\n\n')
 
 with title_column:
+    st.image(logo, caption=None, width=200, use_column_width=False, clamp=False, channels='RGB', output_format='auto')
     Home.createHeading()
     text = """
     This is a text classification demo to classify newspaper headlines into one of four categories: 
@@ -144,6 +146,23 @@ with model_column:
     st.subheader('Enter newspaper headline here')
     headline = st.text_input('Headline')
 
+    # Custom CSS for button hover color
+    st.markdown(
+        """
+        <style>
+        .stButton>button:hover {
+            border-color: #86BC25;
+            color: #86BC25;
+        }
+        .stButton>button:active {
+        background-color: #86BC25;
+        border-color: #86BC25;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     if st.button('Run'):
         prediction, confidence, second_guess, second_confidence = modelPrediction(headline, selected_model)
         with results_column:
@@ -152,6 +171,7 @@ with model_column:
             st.write('**Second Prediction:**', second_guess)
             st.write('**Confidence:**', second_confidence)
         
+
         
         
         
