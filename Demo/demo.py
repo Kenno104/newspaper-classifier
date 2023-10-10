@@ -6,13 +6,13 @@ from datetime import datetime, timedelta
 from PIL import Image
 
 # Load models
-logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
-logistic_vectorizer = joblib.load('../Models/logistic_vectorizer.pkl')
-naive_bayes_model = joblib.load('../Models/naive_bayes_model.pkl')['classifier']  
-naive_bayes_vectorizer = joblib.load('../Models/naive_bayes_vectorizer.pkl')
+logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']  
+logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
+naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
+naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
 
 # Branding
-logo = Image.open('../Demo/Branding/deloitte-logo.png')
+logo = Image.open('./Demo/Branding/deloitte-logo.png')
 
 # FUNCTIONS
 # Basic page setup
