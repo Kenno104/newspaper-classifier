@@ -10,6 +10,8 @@ logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']
 logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
 naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
 naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
+oneVsRest_model = joblib.load('./Models/oneVsRest_model.pkl')['classifier']
+oneVsRest_vectorizer = joblib.load('./Models/oneVsRest_vectorizer.pkl')
 
 # Branding
 logo = Image.open('./Demo/Branding/deloitte-logo.png')
@@ -46,8 +48,8 @@ def selectModel(selected_model):
             return logistic_model, logistic_vectorizer  
         elif selected_model == 'Naive Bayes':
             return naive_bayes_model, naive_bayes_vectorizer
-        # elif selected_model == 'Random Forest':
-        #     return random_forest_model, random_forest_vectorizer
+        elif selected_model == 'One Vs Rest':
+            return oneVsRest_model, oneVsRest_vectorizer
         else:
             return 'Invalid model'
 
@@ -140,7 +142,7 @@ with model_column:
     st.subheader('Model')
     selected_model = st.selectbox(
         'Select model',
-        ('Logistic Regression', 'Naive Bayes')
+        ('Logistic Regression', 'Naive Bayes', 'One Vs Rest')
     )
 
     st.subheader('Enter newspaper headline here')
