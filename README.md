@@ -1,4 +1,8 @@
 # Newspaper Classifier
+# Instructions
+Locate the Demo directory and run 'streamlit run demo.py'. Make sure you a have installed all required dependencies in advance:
+pip install -r requirements.txt
+
 # Intro
 This application demonstrates a range of classification models to determine whether a specified newspaper headline falls into one of the following 4 categories:
     

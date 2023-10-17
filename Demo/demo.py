@@ -13,9 +13,9 @@ import streamlit as st
 import joblib 
 from datetime import datetime, timedelta
 from PIL import Image
-import tensorflow as tf
-from tensorflow import keras
-import tensorflow_hub as hub
+# import tensorflow as tf
+# from tensorflow import keras
+# import tensorflow_hub as hub
 
 from preprocessing import Headline
 
@@ -31,19 +31,20 @@ from preprocessing import Headline
 #     return model
 
 # Load models
-logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
-logistic_vectorizer = joblib.load('../Models/logistic_vectorizer.pkl')
-naive_bayes_model = joblib.load('../Models/naive_bayes_model.pkl')['classifier']  
-naive_bayes_vectorizer = joblib.load('../Models/naive_bayes_vectorizer.pkl')
-oneVsRest_model = joblib.load('../Models/oneVsRest_model.pkl')['classifier']
-oneVsRest_vectorizer = joblib.load('../Models/oneVsRest_vectorizer.pkl')
+# NOTE: When developing - you may have to change the below paths to the models, i.e. use '../Models/logistic_model.pkl' if using Mac.
+logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']  
+logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
+naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
+naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
+oneVsRest_model = joblib.load('./Models/oneVsRest_model.pkl')['classifier']
+oneVsRest_vectorizer = joblib.load('./Models/oneVsRest_vectorizer.pkl')
 
 # Neural nets - TensorFlow
 # simple_nn_model = create_model()
 # simple_nn_model.load_weights('../Models/simple_NN.h5')
 
 # Branding
-logo = Image.open('../Demo/Branding/deloitte-logo.png')
+logo = Image.open('./Demo/Branding/deloitte-logo.png')
 
 # FUNCTIONS
 # Basic page setup
@@ -181,7 +182,7 @@ with model_column:
     st.subheader('Model')
     selected_model = st.selectbox(
         'Select model',
-        ('Logistic Regression', 'Naive Bayes', 'One Vs Rest', 'Simple Neural Network')
+        ('Logistic Regression', 'Naive Bayes', 'One Vs Rest')
     )
 
     st.subheader('Enter newspaper headline here')
