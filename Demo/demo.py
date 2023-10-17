@@ -1,20 +1,49 @@
+# -*- coding: utf-8 -*-
+"""
+Updated on Tue Oct 17 
+
+@author: conkennedy
+
+This functionality is demonstrated via Streamlit (https://streamlit.io/). A Python library that allows for the creation of web apps for demo purposes.
+"""
+
 import pandas as pd
 import numpy as np
 import streamlit as st
 import joblib 
 from datetime import datetime, timedelta
 from PIL import Image
+import tensorflow as tf
+from tensorflow import keras
+import tensorflow_hub as hub
+
+from preprocessing import Headline
+
+#NN model architecture - Commented out until model issues fixed
+# def create_model(): 
+#     model = "https://tfhub.dev/google/nnlm-en-dim50/2"
+#     hub_layer = hub.KerasLayer(model, input_shape=[], dtype=tf.string, trainable=True)
+#     model = keras.Sequential()
+#     model.add(hub_layer)
+#     model.add(keras.layers.Dense(16, activation='relu'))
+#     model.add(keras.layers.Dense(16, activation='relu'))
+#     model.add(keras.layers.Dense(4, activation='softmax'))
+#     return model
 
 # Load models
-logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']  
-logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
-naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
-naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
-oneVsRest_model = joblib.load('./Models/oneVsRest_model.pkl')['classifier']
-oneVsRest_vectorizer = joblib.load('./Models/oneVsRest_vectorizer.pkl')
+logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
+logistic_vectorizer = joblib.load('../Models/logistic_vectorizer.pkl')
+naive_bayes_model = joblib.load('../Models/naive_bayes_model.pkl')['classifier']  
+naive_bayes_vectorizer = joblib.load('../Models/naive_bayes_vectorizer.pkl')
+oneVsRest_model = joblib.load('../Models/oneVsRest_model.pkl')['classifier']
+oneVsRest_vectorizer = joblib.load('../Models/oneVsRest_vectorizer.pkl')
+
+# Neural nets - TensorFlow
+# simple_nn_model = create_model()
+# simple_nn_model.load_weights('../Models/simple_NN.h5')
 
 # Branding
-logo = Image.open('./Demo/Branding/deloitte-logo.png')
+logo = Image.open('../Demo/Branding/deloitte-logo.png')
 
 # FUNCTIONS
 # Basic page setup
@@ -50,6 +79,8 @@ def selectModel(selected_model):
             return naive_bayes_model, naive_bayes_vectorizer
         elif selected_model == 'One Vs Rest':
             return oneVsRest_model, oneVsRest_vectorizer
+        # elif selected_model == 'Simple Neural Network':
+            # return simple_nn_model, None
         else:
             return 'Invalid model'
 
@@ -66,7 +97,15 @@ def modelPrediction(text_input, selected_model):
         'm': 'Health'
     }
 
-    processed_text = vectorizer.transform([text_input])
+    # Determine if using neural net or alternative model - Commented out until model issues fixed
+    # if selected_model == 'Simple Neural Network':
+    #     #CODE HERE
+    # else:
+    if vectorizer is not None:
+        processed_text = vectorizer.transform([text_input])
+    else:
+        processed_text = [text_input]
+
     predicted_probabilities = loaded_model.predict_proba(processed_text)
     
     # Get the index of the most confident prediction
@@ -142,7 +181,7 @@ with model_column:
     st.subheader('Model')
     selected_model = st.selectbox(
         'Select model',
-        ('Logistic Regression', 'Naive Bayes', 'One Vs Rest')
+        ('Logistic Regression', 'Naive Bayes', 'One Vs Rest', 'Simple Neural Network')
     )
 
     st.subheader('Enter newspaper headline here')
@@ -166,6 +205,11 @@ with model_column:
     )
 
     if st.button('Run'):
+        # First, preprocess the input text (headline)
+        headline_instance = Headline(headline)
+        headline = headline_instance.process()
+        
+        # Now, give to model to infer result
         prediction, confidence, second_guess, second_confidence = modelPrediction(headline, selected_model)
         with results_column:
             st.write('**Predited newspaper section:** ', prediction)

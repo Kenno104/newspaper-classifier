@@ -5,5 +5,5 @@ scikit-learn
 # xgboost
 # textblob
 joblib
-# tensorflow
+tensorflow
 streamlit
