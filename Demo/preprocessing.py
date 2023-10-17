@@ -13,7 +13,7 @@ import pandas as pd
 import re
 
 import nltk
-# nltk.download()
+nltk.download()
 
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
