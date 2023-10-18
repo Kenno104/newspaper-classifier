@@ -1,4 +1,4 @@
-# Run this file locally (streamlit run setup.py) to download the NLTK data (it's a lot). 
+# Run this file locally (python3 run setup.py) to download the NLTK data (it's a lot). 
 # When prompted, type 'd' to download.
 # Then, type 'all' to download all packages.
 # And finally, 'q' to quit.
