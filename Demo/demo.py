@@ -207,8 +207,8 @@ with model_column:
 
     if st.button('Run'):
         # First, preprocess the input text (headline)
-        headline_instance = Headline(headline)
-        headline = headline_instance.process()
+        # headline_instance = Headline(headline)
+        # headline = headline_instance.process()
         
         # Now, give to model to infer result
         prediction, confidence, second_guess, second_confidence = modelPrediction(headline, selected_model)

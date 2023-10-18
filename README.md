@@ -2,12 +2,11 @@
 # Setup
 1. Make sure to install all required dependencies in advance:
     'pip install -r requirements.txt'
-2. Navigate to themain directory and run the setup programme to download necessary files.
-    Enter 'python3 run demo.py' to download the NLTK data (it's a lot). 
-    When prompted, type 'd' to download.
-    Then, type 'all' to download all packages.
-    And finally, 'q' to quit.
-3. Next, navigate to the Demo directory and enter 'streamlit run demo.py' to open the app.
+2. Navigate to the main directory and run the 'setup.py' by entering 'python3 run setup.py' to download the NLTK data (it's a lot). 
+    * When prompted, type 'd' to download.
+    * Then, type 'all' to download all packages.
+    * And finally, press 'q' to quit.
+3. After this, navigate to the Demo directory and enter 'streamlit run demo.py' to open the app.
 
 # Intro
 This application demonstrates a range of classification models to determine whether a specified newspaper headline falls into one of the following 4 categories:
