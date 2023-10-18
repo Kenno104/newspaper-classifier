@@ -4,7 +4,8 @@ Updated on Tue Oct 17
 
 @author: conkennedy
 
-This is a shortened preprocessing script that processes the input headline text in a similar manner to what was done for the training data used in the models. This is used in the demo.py script to process the input text before it is passed to the models for prediction.
+This is a shortened preprocessing script that processes the input headline text in a similar manner to what was done for the data used to train the models. 
+This is called from the demo.py script to process the input text before it is passed to the models for inference.
 """
 
 #Import libraries
@@ -13,7 +14,6 @@ import pandas as pd
 import re
 
 import nltk
-nltk.download()
 
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer

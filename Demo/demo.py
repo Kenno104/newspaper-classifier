@@ -32,19 +32,19 @@ from preprocessing import Headline
 
 # Load models
 # NOTE: When developing - you may have to change the below paths to the models, i.e. use '../Models/logistic_model.pkl' if using Mac.
-logistic_model = joblib.load('./Models/logistic_model.pkl')['classifier']  
-logistic_vectorizer = joblib.load('./Models/logistic_vectorizer.pkl')
-naive_bayes_model = joblib.load('./Models/naive_bayes_model.pkl')['classifier']  
-naive_bayes_vectorizer = joblib.load('./Models/naive_bayes_vectorizer.pkl')
-oneVsRest_model = joblib.load('./Models/oneVsRest_model.pkl')['classifier']
-oneVsRest_vectorizer = joblib.load('./Models/oneVsRest_vectorizer.pkl')
+logistic_model = joblib.load('../Models/logistic_model.pkl')['classifier']  
+logistic_vectorizer = joblib.load('../Models/logistic_vectorizer.pkl')
+naive_bayes_model = joblib.load('../Models/naive_bayes_model.pkl')['classifier']  
+naive_bayes_vectorizer = joblib.load('../Models/naive_bayes_vectorizer.pkl')
+oneVsRest_model = joblib.load('../Models/oneVsRest_model.pkl')['classifier']
+oneVsRest_vectorizer = joblib.load('../Models/oneVsRest_vectorizer.pkl')
 
 # Neural nets - TensorFlow
 # simple_nn_model = create_model()
 # simple_nn_model.load_weights('../Models/simple_NN.h5')
 
 # Branding
-logo = Image.open('./Demo/Branding/deloitte-logo.png')
+logo = Image.open('../Demo/Branding/deloitte-logo.png')
 
 # FUNCTIONS
 # Basic page setup
