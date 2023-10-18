@@ -1,4 +1,7 @@
 # Newspaper Classifier
+
+*** This branch is for deployment of an early version of this app to Heroku. It is missing some features ***
+
 # Setup
 1. Make sure to install all required dependencies in advance:
     'pip install -r requirements.txt'
