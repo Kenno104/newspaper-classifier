@@ -43,4 +43,4 @@ Also, I used the recommended learning rate, optimisers, batch size, etc from the
 
 # Additional Info
 An early version of this demo application is available at https://text-classification-1de1de243d7d.herokuapp.com/. 
-This version only includes ML models; logsitic regression, Naive Bayes, & One vs Rest, and it skips the preprocessing stage for input text due to issues with downloading nltk data within the production environemnt in Heroku (this would be a bug to fix in future deployed demos).
+This version only includes ML models; Logistic Regression, Naive Bayes, & One vs Rest, and it skips the preprocessing stage for input text due to issues with downloading nltk data within the production environemnt in Heroku (this would be a bug to fix in future deployed demos).
