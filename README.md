@@ -3,7 +3,7 @@
 1. Make sure to install all required dependencies in advance:
     'pip install -r requirements.txt'
 2. Navigate to the main directory and run the setup programme to download necessary files.
-    * Enter 'python3 run demo.py' to download the NLTK data (it's a lot). 
+    * Enter 'python3 run setup.py' to download the NLTK data (it's a lot). 
     * When prompted, type 'd' to download.
     * Then, type 'all' to download all packages.
     * And finally, 'q' to quit.
